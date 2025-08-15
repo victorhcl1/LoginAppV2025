@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginAppV2025.Pages.EditaUsuarioPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
+            NavigationPage.HasNavigationBar="False"
+             Title="EditaUsuarioPage">
+    <VerticalStackLayout Margin="15"
+                     Padding="15"
+                     Spacing="5"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="CenterAndExpand">
+
+        <Label Text="Cadastrar"
+           TextColor="White"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           FontSize="Title"/>
+
+        <Label x:Name="lblNome"
+               Text="Nome"
+               TextColor="White"
+               FontSize="Subtitle"/>
+
+        <Entry x:Name="txtNome"
+               Text="{Binding Nome}"
+               Placeholder="Digite seu Nome"
+               Keyboard="Text"/>
+
+        <Label x:Name="lblEmail"
+           Text="Email"
+           TextColor="White"
+           FontSize="Subtitle"/>
+
+        <Entry x:Name="txtEmail"
+               Text="{Binding Email}"
+               Placeholder="Digite seu Email"
+               Keyboard="Email"/>
+
+        <Label x:Name="lblSenha"
+           FontSize="Subtitle"
+           Text="Senha"
+           TextColor="White"/>
+
+        <Entry Placeholder="Digite sua Senha"
+           x:Name="txtSenha"
+           Text="{Binding Senha}"
+           IsPassword="True"/>
+
+        <Button Text="Cadastrar"
+            TextColor="Black"
+            WidthRequest="250"
+            x:Name="btnCadastrar"
+            Clicked="btnCadastrar_Clicked"
+            BackgroundColor="#F2E7DC"/>
+
+        <Button Text="Voltar"
+            TextColor="Black"
+            WidthRequest="250"
+            x:Name="btnVoltar"
+            Clicked="btnVoltar_Clicked"
+            BackgroundColor="#F2E7DC"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

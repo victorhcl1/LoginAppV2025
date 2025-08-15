@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginAppV2025.Pages.LoginUsuarioPage"
+             Title="LoginUsuarioPage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource LightBackgroundColor}}"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <VerticalStackLayout Margin="15"
+                 Padding="15"
+                 Spacing="5"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="CenterAndExpand">
+        <Image HeightRequest="250" WidthRequest="350" Source="logoapp.png"/>
+
+        <Label Text="Login"
+               TextColor="White"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="Title"/>
+        
+
+        <Label x:Name="lblEmail"
+               Text="Email"
+               TextColor="White"
+               FontSize="Subtitle"/>
+
+        <Entry x:Name="txtEmail"
+               Placeholder="Digite seu Email"
+               Keyboard="Email"/>
+
+        <Label x:Name="lblSenha"
+               FontSize="Subtitle"
+               Text="Senha"
+               TextColor="White"/>
+
+        <!--   Senha Estilizada  -->
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="0">
+            <Entry x:Name="txtSenha"
+                   IsPassword="True"
+                   Placeholder="Digite sua senha"
+                   WidthRequest="310"
+                   HorizontalOptions="FillAndExpand" />
+
+            <ImageButton x:Name="btnToggleSenha"
+                         Source="eye.png"
+                         Clicked="btnToggleSenha_Clicked"
+                         WidthRequest="50"
+                         MaximumHeightRequest="40"
+                         BackgroundColor="Transparent"
+                         Padding="5" />
+        </HorizontalStackLayout>
+
+        <Button Text="Esqueci minha senha"
+                TextColor="{AppThemeBinding Light=White, Dark=White}"
+                WidthRequest="250"
+                x:Name="btnEsqueci"
+                Clicked="btnEsqueci_Clicked"
+                BackgroundColor="Transparent"/>
+
+        <Button Text="Entrar"
+            TextColor="Black"
+            WidthRequest="250"
+            x:Name="btnEntrar"
+            Clicked="btnEntrar_Clicked"
+            BackgroundColor="#F2E7DC"/>
+
+        <Button Text="Registrar"
+                TextColor="Black"
+                WidthRequest="250"
+                x:Name="btnRegistrar"
+                Clicked="btnRegistrar_Clicked"
+                BackgroundColor="#F2E7DC"/>
+    </VerticalStackLayout>
+
+</ContentPage>
