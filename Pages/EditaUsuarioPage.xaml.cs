@@ -1,37 +1,54 @@
+using System;
+using System.Threading.Tasks;
 using LoginAppV2025.Model;
+using Microsoft.Maui.Controls;
 
-namespace LoginAppV2025.Pages;
-
-public partial class EditaUsuarioPage : ContentPage
+namespace LoginAppV2025.Pages
 {
-    Usuario _usuario;
-    public EditaUsuarioPage()
+    public partial class EditaUsuarioPage : ContentPage
     {
-        _usuario = new Usuario();
-
-        this.BindingContext = _usuario;
-
-        InitializeComponent();
-    }
-
-    private async void btnCadastrar_Clicked(object sender, EventArgs e)
-    {
-        if (string.IsNullOrEmpty(_usuario.Email) && string.IsNullOrEmpty(_usuario.Senha) && string.IsNullOrEmpty(_usuario.Nome))
+        Usuario _usuario;
+        public EditaUsuarioPage()
         {
-            await DisplayAlert("Erro", "Preencha todas as informações", "Fechar");
-            return;
-        }
-        var cadastro = await App.BancoDados.UsuarioDataTable.SalvarUsuario(_usuario);
+            _usuario = new Usuario();
 
-        if (cadastro > 0)
+            this.BindingContext = _usuario;
+            InitializeComponent();
+
+        }
+
+        private void btnToggleSenha_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Sucesso", "Usuário cadastrado com sucesso", "Fechar");
-            await Navigation.PopAsync();
+            txtSenha.IsPassword = !txtSenha.IsPassword;
+            btnToggleSenha.Source = txtSenha.IsPassword ? "hidden.png" : "visible.png";
         }
-    }
 
-    private async void btnVoltar_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync();
+        private async void RegistreSeLabel_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginUsuarioPage());
+        }
+
+        private async void btnEntrar_Clicked_1(object sender, EventArgs e)
+        {
+            string nome = txtNome.Text;
+            string email = txtEmail.Text;
+            string senha = txtSenha.Text;
+
+            if (string.IsNullOrWhiteSpace(nome) ||
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(senha))
+            {
+                DisplayAlert("Erro", "Preencha todos os campos.", "OK");
+                return;
+            }
+
+            var cadastro = await App.BancoDados.UsuarioDataTable.SalvarUsuario(_usuario);
+
+            if (cadastro > 0)
+            {
+                DisplayAlert("Sucesso", "Cadastro realizado!", "OK");
+                await Navigation.PopAsync();
+            }
+        }
     }
 }

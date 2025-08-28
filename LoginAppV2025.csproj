@@ -43,11 +43,9 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
+		<MauiIcon Include="Resources\AppIcon\file.svg" ForegroundFile="Resources\AppIcon\file.svg" />
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+		<!--<MauiSplashScreen Include="Resources\Splash\splashlogo.png" Color="#512BD4" />-->
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
@@ -60,7 +58,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\logo.svg" />
+		<Compile Remove="Pages\NewContent1.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiImage Remove="Resources\Images\logo_speed.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Remove="Pages\NewContent1.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\Images\logo_speed.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiImage Include="Resources\Splash\splashlogo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,18 +85,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\EditaUsuarioPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\EsqueciSenha.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\HomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginUsuarioPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="Pages\EditaUsuarioPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\EsqueciSenha.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\HomePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\LoginUsuarioPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\PerfilPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 </Project>

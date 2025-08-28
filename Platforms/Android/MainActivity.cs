@@ -25,7 +25,7 @@ namespace LoginAppV2025
                 }
                 else
                 {
-                    Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#038C7F")); // Amarelo Ouro
+                    Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#000000")); // Amarelo Ouro
                 }
             }
 

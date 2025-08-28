@@ -1,77 +1,132 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LoginAppV2025.Pages.LoginUsuarioPage"
-             Title="LoginUsuarioPage"
-             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource LightBackgroundColor}}"
-             NavigationPage.HasNavigationBar="False"
-             >
+             BackgroundColor="#181A20"
+             NavigationPage.HasNavigationBar="False">
 
-    <VerticalStackLayout Margin="15"
-                 Padding="15"
-                 Spacing="5"
-                 HorizontalOptions="FillAndExpand"
-                 VerticalOptions="CenterAndExpand">
-        <Image HeightRequest="250" WidthRequest="350" Source="logoapp.png"/>
+    <ScrollView>
+        <VerticalStackLayout Padding="30,60,30,10" Spacing="10">
 
-        <Label Text="Login"
+            <!-- Logo -->
+            <Image Source="speedlogo.png"
+                   HeightRequest="90"
+                   HorizontalOptions="Center" />
+
+            <!-- Título -->
+            <Label Text="SpeedCode"
+                   FontSize="36"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <!-- Subtítulo -->
+            <Label Text="Login"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
+
+
+            <!-- Nome -->
+            <Label Text="Email:"
+       TextColor="White"
+       FontSize="18"
+       FontAttributes="Bold"
+       Margin="0,0,0,0"/>
+            <Frame Padding="0" HasShadow="False" BorderColor="Transparent" BackgroundColor="Transparent">
+                <Entry x:Name="txtEmail"
+           TextColor="White"
+           BackgroundColor="#6b706e"
+           HeightRequest="45"
+           FontSize="16"
+           Margin="0,0,0,0"
+           ClearButtonVisibility="WhileEditing"
+                       Keyboard="Chat"
+                />
+            </Frame>
+
+            <!-- Senha -->
+            <Label Text="Password:"
+       TextColor="White"
+       FontSize="18"
+       FontAttributes="Bold"
+       Margin="0,0,0,0"/>
+            <Frame Padding="0" HasShadow="False" BorderColor="Transparent" BackgroundColor="Transparent">
+                <Grid>
+                    <Entry x:Name="txtSenha"
+               IsPassword="True"
                TextColor="White"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               FontSize="Title"/>
-        
+               BackgroundColor="#181A20"
+               HeightRequest="45"
+               FontSize="16"
+               Margin="0"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"/>
+                    <ImageButton x:Name="btnToggleSenha"
+                     Source="hidden.png"
+                     BackgroundColor="Transparent"
+                     Clicked="btnToggleSenha_Clicked"
+                     HeightRequest="10"
+                     WidthRequest="10"
+                     VerticalOptions="Center"
+                     HorizontalOptions="End"
+                     Margin="0,0,0,0"/>
+                </Grid>
+            </Frame>
+            <!-- Botão Login -->
+            <Button Text="Logar"
+                    x:Name="btnEntrar"
+                    Clicked="btnEntrar_Clicked"
+                    BackgroundColor="#2970F2"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="45"
+                    FontSize="16"
+                    Margin="0,10,0,0" />
 
-        <Label x:Name="lblEmail"
-               Text="Email"
-               TextColor="White"
-               FontSize="Subtitle"/>
+            <!-- Separador -->
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,10" WidthRequest="220">
+                <BoxView HeightRequest="1" WidthRequest="80" BackgroundColor="#444" VerticalOptions="Center"/>
+                <Label Text="Or" TextColor="#A0A0A0" FontSize="14" Margin="10,0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <BoxView HeightRequest="1" WidthRequest="80" BackgroundColor="#444" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
 
-        <Entry x:Name="txtEmail"
-               Placeholder="Digite seu Email"
-               Keyboard="Email"/>
+            <!-- Botão Google -->
+            <Button Text="Continue with Google"
+                    BackgroundColor="White"
+                    TextColor="#444"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="45"
+                    FontSize="16"
+                    Margin="0,0,0,0"
+                    ImageSource="google_icon.png" />
 
-        <Label x:Name="lblSenha"
-               FontSize="Subtitle"
-               Text="Senha"
-               TextColor="White"/>
+            <!-- Botão Facebook -->
+            <Button Text="Continue with Facebook"
+                    BackgroundColor="White"
+                    TextColor="#444"
+                    FontAttributes="Bold"
+                    CornerRadius="8"
+                    HeightRequest="45"
+                    FontSize="16"
+                    Margin="0,0,0,0"
+                    ImageSource="facebook_icon.png" />
 
-        <!--   Senha Estilizada  -->
-        <HorizontalStackLayout VerticalOptions="Center" Spacing="0">
-            <Entry x:Name="txtSenha"
-                   IsPassword="True"
-                   Placeholder="Digite sua senha"
-                   WidthRequest="310"
-                   HorizontalOptions="FillAndExpand" />
-
-            <ImageButton x:Name="btnToggleSenha"
-                         Source="eye.png"
-                         Clicked="btnToggleSenha_Clicked"
-                         WidthRequest="50"
-                         MaximumHeightRequest="40"
-                         BackgroundColor="Transparent"
-                         Padding="5" />
-        </HorizontalStackLayout>
-
-        <Button Text="Esqueci minha senha"
-                TextColor="{AppThemeBinding Light=White, Dark=White}"
-                WidthRequest="250"
-                x:Name="btnEsqueci"
-                Clicked="btnEsqueci_Clicked"
-                BackgroundColor="Transparent"/>
-
-        <Button Text="Entrar"
-            TextColor="Black"
-            WidthRequest="250"
-            x:Name="btnEntrar"
-            Clicked="btnEntrar_Clicked"
-            BackgroundColor="#F2E7DC"/>
-
-        <Button Text="Registrar"
-                TextColor="Black"
-                WidthRequest="250"
-                x:Name="btnRegistrar"
-                Clicked="btnRegistrar_Clicked"
-                BackgroundColor="#F2E7DC"/>
-    </VerticalStackLayout>
-
+            <!-- Link de registro -->
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,0">
+                <Label Text="Ainda não tem conta? "
+                       TextColor="#A0A0A0"
+                       FontSize="13"/>
+                <Label x:Name="RegistreSeLabel"
+       Text="Registre-se"
+       TextColor="#2970F2"
+       FontSize="13"
+       FontAttributes="Bold"
+       HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

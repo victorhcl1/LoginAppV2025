@@ -1,65 +1,70 @@
-namespace LoginAppV2025.Pages;
-
-public partial class LoginUsuarioPage : ContentPage
+namespace LoginAppV2025.Pages
 {
-    
-    public LoginUsuarioPage()
-	{
-		InitializeComponent();
-	}
-
-    private async void btnEntrar_Clicked(object sender, EventArgs e)
+    public partial class LoginUsuarioPage : ContentPage
     {
-        string email = txtEmail.Text;
-        string senha = txtSenha.Text;
-        if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(senha))
+        public LoginUsuarioPage()
         {
-            var usuario = await App.BancoDados.UsuarioDataTable.ObtemUsuario(email, senha);
+            InitializeComponent();
 
-            if (usuario != null)
+            // Adiciona o evento de toque ao label "Registre-se"
+            var tapRegistrar = new TapGestureRecognizer();
+            tapRegistrar.Tapped += btnRegistrar_Clicked;
+            RegistreSeLabel.GestureRecognizers.Add(tapRegistrar);
+        }
+
+        private async void btnEntrar_Clicked(object sender, EventArgs e)
+        {
+            string email = txtEmail.Text;
+            string senha = txtSenha.Text;
+            if (!string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(senha))
             {
-                await DisplayAlert("Sucesso", "Login efetuado com sucesso", "OK");
-                //Application.Current.MainPage = new AppShell();
-                await Navigation.PushAsync(new HomePage());
-                App.Usuario = usuario;
+                var usuario = await App.BancoDados.UsuarioDataTable.ObtemUsuario(email, senha);
+
+                if (usuario != null)
+                {
+                    await DisplayAlert("Sucesso", "Login efetuado com sucesso", "OK");
+                    //Application.Current.MainPage = new AppShell();
+                    await Navigation.PushAsync(new HomePage());
+                    App.Usuario = usuario;
+                }
+                else
+                {
+                    await DisplayAlert("Erro", "Usuário ou senha inválidos", "OK");
+                    return;
+                }
             }
             else
             {
-                await DisplayAlert("Erro", "Usuário ou senha inválidos", "OK");
-                return;
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    await DisplayAlert("Erro", "Preencha o campo de e-mail", "OK");
+                }
+                else if (string.IsNullOrWhiteSpace(senha))
+                {
+                    await DisplayAlert("Erro", "Preencha o campo de senha", "OK");
+                }
             }
         }
-        else
+
+        private async void btnRegistrar_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                await DisplayAlert("Erro", "Preencha o campo de e-mail", "OK");
-            }
-            else if (string.IsNullOrWhiteSpace(senha))
-            {
-               await DisplayAlert("Erro", "Preencha o campo de senha", "OK");
-            }
+            await Navigation.PushAsync(new EditaUsuarioPage());
         }
-    }
 
-    private async void btnRegistrar_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new EditaUsuarioPage());
-    }
+        private async void btnEsqueci_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EsqueciSenha());
+        }
 
-    private async void btnEsqueci_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new EsqueciSenha());
-    }
+        private void btnToggleSenha_Clicked(object sender, EventArgs e)
+        {
+            txtSenha.IsPassword = !txtSenha.IsPassword;
 
-    private void btnToggleSenha_Clicked(object sender, EventArgs e)
-    {
-        txtSenha.IsPassword = !txtSenha.IsPassword;
-
-        // Atualiza o ícone do botão conforme estado
-        if (txtSenha.IsPassword)
-            btnToggleSenha.Source = "hidden.png";  // olho fechado
-        else
-            btnToggleSenha.Source = "eye.png";      // olho aberto
+            // Atualiza o ícone do botão conforme estado
+            if (txtSenha.IsPassword)
+                btnToggleSenha.Source = "hidden.png";  // olho fechado
+            else
+                btnToggleSenha.Source = "eye.png";      // olho aberto
+        }
     }
 }

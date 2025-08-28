@@ -1,9 +1,17 @@
-namespace LoginAppV2025.Pages;
+using Microsoft.Maui.Controls;
 
-public partial class HomePage : ContentPage
+namespace LoginAppV2025.Pages
 {
-	public HomePage()
-	{
-		InitializeComponent();
-	}
+    public partial class HomePage : ContentPage
+    {
+        public HomePage()
+        {
+            InitializeComponent();
+        }
+
+        private async void PerfilButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PerfilPage());
+        }
+    }
 }

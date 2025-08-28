@@ -1,0 +1,108 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginAppV2025.Pages.PerfilPage"
+             BackgroundColor="#181A20"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,60,30,10" Spacing="20" VerticalOptions="FillAndExpand">
+
+            <!-- Foto de perfil -->
+            <Image Source="perfil_avatar.png"
+                   HeightRequest="140"
+                   WidthRequest="140"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,0"
+                   Aspect="AspectFill"
+                   BackgroundColor="Transparent"
+                   />
+
+            <!-- Nome -->
+            <Label Text="Ruan Ontario"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0" />
+
+            <!-- Email -->
+            <Label Text="ruanontario@gmail.com"
+                   FontSize="16"
+                   TextColor="#A0A0A0"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,0" />
+
+            <!-- Pontos -->
+            <Frame BackgroundColor="#444"
+                   CornerRadius="12"
+                   Padding="15,8"
+                   Margin="0,30,0,0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Pontos:"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="2150"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           Grid.Column="1"/>
+                </Grid>
+            </Frame>
+
+            <!-- Rank -->
+            <Frame BackgroundColor="#444"
+                   CornerRadius="12"
+                   Padding="15,8"
+                   Margin="0,10,0,0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Rank:"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="1st"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           Grid.Column="1"/>
+                </Grid>
+            </Frame>
+
+            <!-- Desafios completos -->
+            <Frame BackgroundColor="#444"
+                   CornerRadius="12"
+                   Padding="15,8"
+                   Margin="0,10,0,0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="challenge completed:"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Label Text="14"
+                           FontSize="16"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           Grid.Column="1"/>
+                </Grid>
+            </Frame>
+
+            <!-- Ícone de voltar -->
+            <Grid VerticalOptions="EndAndExpand" HorizontalOptions="Start" Margin="0,30,0,0">
+                <ImageButton Source="arrow_back.png"
+                             BackgroundColor="Transparent"
+                             HeightRequest="32"
+                             WidthRequest="32"
+                             Clicked="OnBackClicked"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
